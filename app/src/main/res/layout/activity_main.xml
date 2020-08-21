@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F44336"
+        android:id="@+id/toolbar"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AZ market"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-black"
+            />
+    </androidx.appcompat.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+    <ViewFlipper
+        android:id="@+id/viewflipper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:flipInterval="5000"
+        android:autoStart="true"
+        />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular Items"
+                android:textSize="30sp"
+                android:textColor="#F44336"
+                />
+
+                <ImageButton
+                    android:id="@+id/collapspopular"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="170dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/invisible" />
+            </RelativeLayout>
+
+            <View
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#F44336"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textSize="30sp"
+                android:textColor="#F44336"
+                />
+
+            <ImageButton
+                android:id="@+id/collapscategory"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="212dp"
+                android:background="#FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/invisible" />
+        </RelativeLayout>
+        <View
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#F44336"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:weightSum="2"
+            android:id="@+id/recyclerview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
