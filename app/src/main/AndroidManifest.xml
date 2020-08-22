@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserProfile"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ProductView"></activity>
+        <activity android:name=".ProductList" />
+        <activity
+            android:name=".UserProfile"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />

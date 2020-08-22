@@ -31,17 +31,7 @@ public class UserProfile extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser!=null) {
-            Intent intent = new Intent(UserProfile.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        }
-    }
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,20 +65,6 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-
-
-        /*
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this,MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-         */
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());

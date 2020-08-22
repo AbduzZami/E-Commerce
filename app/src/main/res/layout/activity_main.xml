@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F8E5E3">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,12 +58,13 @@
                 />
 
                 <ImageButton
+                    android:tint="#F44336"
                     android:id="@+id/collapspopular"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginStart="170dp"
-                    android:background="#FFFFFF"
+                    android:background="@android:color/transparent"
                     android:scaleType="fitXY"
                     android:src="@drawable/invisible" />
             </RelativeLayout>
@@ -109,13 +111,14 @@
                 />
 
             <ImageButton
+                android:tint="#F44336"
                 android:id="@+id/collapscategory"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="212dp"
-                android:background="#FFFFFF"
+                android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/invisible" />
         </RelativeLayout>
@@ -130,6 +133,7 @@
             android:id="@+id/recyclerview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="true"
             />
 
     </LinearLayout>

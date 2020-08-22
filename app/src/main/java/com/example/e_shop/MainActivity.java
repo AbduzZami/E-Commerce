@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void readCategories() {
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     Category category = dataSnapshot.getValue(Category.class);
                     mCategory.add(category);
                 }
-                categoryAdapter = new CategoryAdapter(getApplicationContext(),mCategory);
+                categoryAdapter = new CategoryAdapter(MainActivity.this,mCategory);
                 recyclerView2.setAdapter(categoryAdapter);
             }
 
@@ -145,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void readPopularItems() {
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     Popular popular = dataSnapshot.getValue(Popular.class);
                     mpopular.add(popular);
                 }
-                popularAdapter = new PopularAdapter(getApplicationContext(),mpopular);
+                popularAdapter = new PopularAdapter(MainActivity.this,mpopular);
                 recyclerView.setAdapter(popularAdapter);
             }
 
@@ -209,9 +211,9 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.account)
         {
             Intent intent = new Intent(MainActivity.this,UserProfile.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();
+            //finish();
         }
         return super.onOptionsItemSelected(item);
     }

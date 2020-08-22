@@ -1,12 +1,14 @@
 package com.example.e_shop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -34,11 +36,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ImageV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.ImageViewHolder holder, int position) {
-        Category category = mCategory.get(position);
+    public void onBindViewHolder(@NonNull final CategoryAdapter.ImageViewHolder holder, int position) {
+        final Category category = mCategory.get(position);
         holder.cat_name.setText(category.getCat_name());
         //holder.cat_image.setBackgroundColor(Color.parseColor(category.getCat_bg()));
         Picasso.get().load(category.getCat_icon_url()).placeholder(R.drawable.ic_baseline_image_24).fit().centerCrop().into(holder.cat_image);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,ProductList.class);
+                intent.putExtra("Catname",category.getCat_name());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
