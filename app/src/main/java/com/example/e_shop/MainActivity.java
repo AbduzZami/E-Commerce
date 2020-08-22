@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper viewFlipper ;
     RecyclerView recyclerView , recyclerView2;
     PopularAdapter popularAdapter ;
-    List<Popular> mpopular ;
+    List<Product> mpopular ;
     CategoryAdapter categoryAdapter;
     DatabaseReference databaseReference ;
     List<BannerPics> bannerPics ;
@@ -155,15 +155,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         mpopular = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Popular");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Category_items");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mpopular.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
-                    Popular popular = dataSnapshot.getValue(Popular.class);
-                    mpopular.add(popular);
+                    Product product = dataSnapshot.getValue(Product.class);
+                    if (product.getItem_popular().equals("yes"))
+                    mpopular.add(product);
                 }
                 popularAdapter = new PopularAdapter(MainActivity.this,mpopular);
                 recyclerView.setAdapter(popularAdapter);
@@ -206,7 +207,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.cart)
         {
-            Toast.makeText(getApplicationContext(),"Cart clicked",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this,CartActivity.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            //finish();
         }
         if (item.getItemId() == R.id.account)
         {

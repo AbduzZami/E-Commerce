@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,38 +18,29 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ImageViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ImageViewHolder> {
     private Context context;
-    private List<Product> mpopular ;
+    private List<Product> mProduct ;
 
-    public PopularAdapter(Context context, List<Product> mpopular) {
+    public CardAdapter(Context context, List<Product> mProduct) {
         this.context = context;
-        this.mpopular = mpopular;
+        this.mProduct = mProduct;
     }
 
     @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.popular_item,parent,false);
-        return new ImageViewHolder(view);
+    public CardAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_item,parent,false);
+        return new CardAdapter.ImageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        final Product product = mpopular.get(position);
+    public void onBindViewHolder(@NonNull final CardAdapter.ImageViewHolder holder, int position) {
+        final Product product = mProduct.get(position);
         holder.product_name.setText(product.getItem_name());
         holder.priduct_price.setText(product.getItem_price());
         Picasso.get().load(product.getItem_image()).fit().placeholder(R.drawable.ic_baseline_image_24).centerCrop().into(holder.product_image);
-
-
-        if (product.getItem_cart().equals("no"))
-        {
-            holder.product_cart.setImageResource(R.drawable.ic_baseline_favorite_border_24);
-        }
-        else
-            holder.product_cart.setImageResource(R.drawable.ic_baseline_favorite_24);
-
-        holder.product_cart.setOnClickListener(new View.OnClickListener() {
+        holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (product.getItem_cart().equals("no"))
@@ -66,7 +58,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ImageVie
                     hashMap.put("item_cart","no");
                     databaseReference.updateChildren(hashMap);
                 }
-
             }
         });
     }
@@ -75,19 +66,21 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ImageVie
 
     @Override
     public int getItemCount() {
-        return mpopular.size();
+        return mProduct.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
         private TextView product_name,priduct_price;
-        private ImageView product_image , product_cart ;
+        private ImageView product_image ;
+        private ImageButton cancel;
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            product_image = itemView.findViewById(R.id.product_image);
-            product_name = itemView.findViewById(R.id.product_name);
-            priduct_price = itemView.findViewById(R.id.product_price);
-            product_cart = itemView.findViewById(R.id.cartimg);
+            product_image = itemView.findViewById(R.id.prod_img);
+            product_name = itemView.findViewById(R.id.prod_name);
+            priduct_price = itemView.findViewById(R.id.prod_price);
+            cancel = itemView.findViewById(R.id.removebutton);
         }
     }
 }
+

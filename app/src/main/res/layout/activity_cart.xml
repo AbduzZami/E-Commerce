@@ -4,35 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductList"
     android:orientation="vertical"
-    android:background="#FFF8E5E3"
-    >
+    tools:context=".CartActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:background="#F44336"
-        android:id="@+id/toolbar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F44336"
+        android:id="@+id/toolbar4"
         >
         <TextView
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            android:id="@+id/catname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category Name"
+            android:text="Cart"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
             />
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:orientation="horizontal"
 
-        android:id="@+id/recyclerview3"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/recyclerview4"
         />
-
 
 
 </LinearLayout>

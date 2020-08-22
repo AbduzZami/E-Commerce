@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -20,39 +20,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductList extends AppCompatActivity {
-
+public class CartActivity extends AppCompatActivity {
     TextView textView;
     RecyclerView recyclerView;
     List<Product> mProduct ;
-    ProductAdapter productAdapter ;
+    CardAdapter cardAdapter ;
     String category_name ;
     DatabaseReference databaseReference ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_list);
+        setContentView(R.layout.activity_cart);
 
-        textView = findViewById(R.id.catname);
-
-        Bundle bundle = getIntent().getExtras();
-
-        if (bundle.getString("Catname")!=null)
-        {
-            category_name = bundle.getString("Catname");
-            textView.setText(category_name);
-        }
-
-        Toolbar toolbar = findViewById(R.id.toolbar3);
+        Toolbar toolbar = findViewById(R.id.toolbar4);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerView = findViewById(R.id.recyclerview3);
+
+        recyclerView = findViewById(R.id.recyclerview4);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mProduct = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("Category_items");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -62,11 +52,11 @@ public class ProductList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
                     Product product = dataSnapshot.getValue(Product.class);
-                    if (product.getItem_cat().equals(category_name))
-                    mProduct.add(product);
+                    if (product.getItem_cart().equals("yes"))
+                        mProduct.add(product);
                 }
-                productAdapter = new ProductAdapter(ProductList.this,mProduct);
-                recyclerView.setAdapter(productAdapter);
+                cardAdapter = new CardAdapter(CartActivity.this,mProduct);
+                recyclerView.setAdapter(cardAdapter);
             }
 
             @Override
@@ -76,7 +66,6 @@ public class ProductList extends AppCompatActivity {
         });
 
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home)
