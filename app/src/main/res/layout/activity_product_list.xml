@@ -18,7 +18,7 @@
         <TextView
             android:fontFamily="@font/candal"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/catname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="20sp"
             />
     </androidx.appcompat.widget.Toolbar>
 

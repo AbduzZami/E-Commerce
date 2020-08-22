@@ -25,7 +25,7 @@
             android:text="ACCOUNT INFO"
             android:fontFamily="@font/candal"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="20sp"
             />
     </androidx.appcompat.widget.Toolbar>
 
