@@ -1,6 +1,7 @@
 package com.example.e_shop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,18 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ImageVie
                     databaseReference.updateChildren(hashMap);
                 }
 
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,ProductView.class);
+                intent.putExtra("ProductName",product.getItem_name());
+                intent.putExtra("ProductPrice",product.getItem_price());
+                intent.putExtra("ProductId",product.getItem_id());
+                intent.putExtra("ProductImage",product.getItem_image());
+                intent.putExtra("ProductCart",product.getItem_cart());
+                context.startActivity(intent);
             }
         });
     }

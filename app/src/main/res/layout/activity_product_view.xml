@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductView">
+    tools:context=".ProductView"
+    android:orientation="vertical"
+    android:weightSum="4"
+    android:background="#F8E5E3">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F44336"
+        >
+        <TextView
+            android:fontFamily="@font/candal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textColor="#FFFFFF"
+            android:id="@+id/prod_name_toolbar"
+            android:textSize="30sp"
+            />
+    </androidx.appcompat.widget.Toolbar>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/prod_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:textColor="#F44336"
+        android:id="@+id/prod_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textSize="30sp"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:textColor="#F44336"
+        android:id="@+id/prod_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        />
+    <Button
+        android:id="@+id/cartho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD TO CART"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:background="#F44336"
+        android:textColor="#FFFFFF"
+        />
+
+
+</LinearLayout>
